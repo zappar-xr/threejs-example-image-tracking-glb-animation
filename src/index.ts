@@ -7,9 +7,11 @@
 import * as ZapparThree from '@zappar/zappar-threejs';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import model from '../assets/waving.glb';
-import target from '../assets/example-tracking-image.zpt';
-import './index.sass';
+
+import './index.css';
+
+const model = new URL('../assets/ZapBolt.glb', import.meta.url).href;
+const target = new URL('../assets/example-tracking-image.zpt', import.meta.url).href;
 
 // The SDK is supported on many different browsers, but there are some that
 // don't provide camera access. This function detects if the browser is supported
@@ -73,8 +75,6 @@ const imageTrackerGroup = new ZapparThree.ImageAnchorGroup(camera, imageTracker)
 // Add our image tracker group into the ThreeJS scene
 scene.add(imageTrackerGroup);
 
-// Since we're using webpack, we can use the 'file-loader' to make sure these assets are
-// automatically included in our output folder
 
 let action: THREE.AnimationAction;
 let mixer: THREE.AnimationMixer;
